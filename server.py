@@ -1,6 +1,6 @@
 # Imports
 from flask import Flask
-from ServerApi import ServerApi
+from api.ServerApi import ServerApi
 app = Flask(__name__)
 
 api = ServerApi(app)
