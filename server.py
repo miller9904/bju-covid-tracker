@@ -2,7 +2,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
 from tinydb import TinyDB, Query
-from operator import attrgetter
 from datetime import datetime
 
 # Set up server and data storage
