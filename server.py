@@ -3,6 +3,7 @@ from flask import Flask
 from flask_restful import Resource, Api, abort, reqparse
 from tinydb import TinyDB, Query
 from operator import attrgetter
+from datetime import datetime
 
 # Set up server and data storage
 app = Flask(__name__)
@@ -50,6 +51,7 @@ class entries(Resource):
         # Run query and return results
         result = db.search(query.date.test(query_test, args['begin'], args['end']))
         
+        # https://wiki.python.org/moin/SortingListsOfDictionaries
         sort_on = "date"
         decorated = [(dict_[sort_on], dict_) for dict_ in result]
         decorated.sort(reverse=(args['sort'] == 'descending'))
@@ -57,9 +59,18 @@ class entries(Resource):
 
         return result
 
+class latest(Resource):
+    def get(self):
+        # now = datetime.now()
+        # date = now.strftime('%Y%m%d')
+
+        # Returns the latest record to be inserted.  This is assumed to be the latest information collected.  This also assumes that records are sequential in time and are never deleted.
+        return db.get(doc_id=len(db))
+
 
 
 api.add_resource(root, '/api/v1/')
+api.add_resource(latest, '/api/v1/latest')
 api.add_resource(entries, '/api/v1/entries')
 api.add_resource(entry, '/api/v1/entries/<int:date>')
 
