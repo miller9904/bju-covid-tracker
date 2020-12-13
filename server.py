@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Resource, Api, abort, reqparse
 from tinydb import TinyDB, Query
 from datetime import datetime
@@ -63,8 +63,16 @@ class latest(Resource):
         # now = datetime.now()
         # date = now.strftime('%Y%m%d')
 
-        # Returns the latest record to be inserted.  This is assumed to be the latest information collected.  This also assumes that records are sequential in time and are never deleted.
-        return db.get(doc_id=len(db))
+        # Read all records in database, sort them, and return the latest
+        results = db.all()
+
+        # https://wiki.python.org/moin/SortingListsOfDictionaries
+        sort_on = "date"
+        decorated = [(dict_[sort_on], dict_) for dict_ in results]
+        decorated.sort(reverse=True)
+        result = [dict_ for (key, dict_) in decorated][0]
+
+        return result
 
 
 
@@ -72,6 +80,10 @@ api.add_resource(root, '/api/v1/')
 api.add_resource(latest, '/api/v1/latest')
 api.add_resource(entries, '/api/v1/entries')
 api.add_resource(entry, '/api/v1/entries/<int:date>')
+
+@app.route('/')
+def index():
+    return render_template('index.html.jinja')
 
 if __name__ == '__main__':
     app.run(debug=True)
