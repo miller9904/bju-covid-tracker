@@ -83,7 +83,24 @@ api.add_resource(entry, '/api/v1/entries/<int:date>')
 
 @app.route('/')
 def index():
-    return render_template('index.html.jinja')
+    results = db.all()
+
+    # https://wiki.python.org/moin/SortingListsOfDictionaries
+    sort_on = "date"
+    decorated = [(dict_[sort_on], dict_) for dict_ in results]
+    decorated.sort(reverse=True)
+    result = [dict_ for (key, dict_) in decorated][0]
+
+    date = datetime.strptime(str(result['date']), '%Y%m%d')
+    date = datetime.strftime(date, '%A, %B %d, %Y')
+
+    isolations = result['studentIsolation'] + result['facStaffIsolation']
+
+    hospitalizations = result['studentHospitalization'] + result['facStaffHospitalization']
+
+    occurrence = round(3000 / isolations)
+
+    return render_template('index.html.jinja', date=date, isolations=isolations, hospitalizations=hospitalizations, occurrence=occurrence)
 
 if __name__ == '__main__':
     app.run(debug=True)

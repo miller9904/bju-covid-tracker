@@ -6,4 +6,35 @@ specific font stacks to ensure the greatest OS/browser compatibility.
 
 html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     font-family: 'Noto Serif', Georgia, Times, "Times New Roman", serif;
+    color: #464646;
+}
+
+.titlebar {
+    height: 64px;
+    display: flex;
+    align-items: center;
+}
+
+.page-title {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 16pt;
+}
+
+.hero-stats {
+    text-align: center;
+    align-items: center;
+}
+
+.hero-number {
+    font-size: 4em;
+}
+
+.hero-label {
+    font-size: 16pt;
+}
+
+.hero-stat {
+    margin-top: 24px;
+    margin-bottom: 24px;
 }
