@@ -100,7 +100,17 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
 
     var config = {
         responsive: true,
-        displaylogo: false
+        displaylogo: false,
+        modeBarButtonsToRemove: [
+            'zoom2d',
+            'pan2d',
+            'select2d',
+            'lasso2d',
+            'zoomIn2d',
+            'zoomOut2d',
+            'toggleSpikelines',
+            'resetScale2d'
+        ]
     }
 
     Plotly.newPlot('activeCasesGraph', [isolationTrace, hospitalizationTrace], layout, config);
