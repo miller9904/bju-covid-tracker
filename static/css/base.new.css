@@ -28,10 +28,14 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 
 .hero-number {
     font-size: 4em;
+    display: flex;
 }
 
 .hero-label {
-    font-size: 16pt;
+    font-size: 10pt;
+    font-style: italic;
+    padding-top: 5px;
+    /*border-top: 1px solid #464646;*/
 }
 
 .hero-stat {
@@ -40,5 +44,8 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 }
 
 .hero-stats-breakdown {
-    font-size: 16pt;
+    font-size: 14pt;
+    line-height: 1.5;
+    margin-left: 15px;
+    margin-top: 12px;
 }

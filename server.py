@@ -74,11 +74,30 @@ class latest(Resource):
 
         return result
 
+class all(Resource):
+    def get(self):
+        parser = reqparse.RequestParser()
+
+        # Register possible request parameters
+        parser.add_argument('sort', type=str, choices=('ascending', 'descending'), help='{error_msg}. Use \'ascending\' or \'descending\'')
+
+        # Parse request parameters
+        args = parser.parse_args()
+        # Read all records in database and sort them
+        results = db.all()
+
+        # https://wiki.python.org/moin/SortingListsOfDictionaries
+        sort_on = "date"
+        decorated = [(dict_[sort_on], dict_) for dict_ in results]
+        decorated.sort(reverse=(args['sort'] == 'descending'))
+        return [dict_ for (key, dict_) in decorated]
+
 
 
 api.add_resource(root, '/api/v1/')
 api.add_resource(latest, '/api/v1/latest')
 api.add_resource(entries, '/api/v1/entries')
+api.add_resource(all, '/api/v1/entries/all')
 api.add_resource(entry, '/api/v1/entries/<int:date>')
 
 @app.route('/')
@@ -95,12 +114,23 @@ def index():
     date = datetime.strftime(date, '%A, %B %d, %Y')
 
     isolations = result['studentIsolation'] + result['facStaffIsolation']
+    sI = result['studentIsolation']
+    fI = result['facStaffIsolation']
 
     hospitalizations = result['studentHospitalization'] + result['facStaffHospitalization']
+    sH = result['studentHospitalization']
+    fH = result['facStaffHospitalization']
 
     occurrence = round(3000 / isolations)
 
-    return render_template('index.html.jinja', date=date, isolations=isolations, hospitalizations=hospitalizations, occurrence=occurrence)
+    return render_template('index.new.html.jinja', date=date, 
+    isolations=isolations, 
+    hospitalizations=hospitalizations, 
+    occurrence=occurrence,
+    sI=sI,
+    fI=fI,
+    sH=sH,
+    fH=fH)
 
 if __name__ == '__main__':
     app.run(debug=True)

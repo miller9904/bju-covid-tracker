@@ -1,4 +1,4 @@
-Plotly.d3.json("/api/v1/entries?begin=20200101&end=20210101&sort=ascending", function (err, data) {
+Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
 
 
     function isolations(data) {
@@ -27,7 +27,7 @@ Plotly.d3.json("/api/v1/entries?begin=20200101&end=20210101&sort=ascending", fun
     var isolationTrace = {
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Active Cases',
+        name: 'Isolations',
         x: date(data),
         y: isolations(data),
         line: {
@@ -67,7 +67,22 @@ Plotly.d3.json("/api/v1/entries?begin=20200101&end=20210101&sort=ascending", fun
             tickfont: {
                 family: 'Roboto'
             },
-            automargin: true
+            automargin: true,
+            rangeselector: {buttons: [
+                {
+                  count: 1,
+                  label: '1m',
+                  step: 'month',
+                  stepmode: 'backward'
+                },
+                {
+                  count: 6,
+                  label: '6m',
+                  step: 'month',
+                  stepmode: 'backward'
+                },
+                {step: 'all'}
+              ]},
         },
 
         yaxis: {
