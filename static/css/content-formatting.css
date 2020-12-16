@@ -1,0 +1,46 @@
+a {
+    text-decoration: none;
+    color: #75783c;
+}
+
+pre {
+    font-family: monospace;
+    font-size: 11pt;
+    line-height: 1.2;
+    background: #0000001c;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+@media (max-width: 35.5em) {
+    .article {
+        font-size: 12pt !important;
+    }
+
+    .title {
+        font-size: 24pt !important;
+        padding-top: 15px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: initial;
+    margin-bottom: 8px;
+    margin-top: 0;
+    line-height: initial;
+}
+
+p {
+    margin-top: 5px;
+}
+
+.article {
+    font-size: 14pt;
+    line-height: 1.73;
+    color: rgb(70, 70, 70);
+}

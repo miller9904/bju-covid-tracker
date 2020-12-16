@@ -10,7 +10,6 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 }
 
 .titlebar {
-    height: 64px;
     display: flex;
     align-items: center;
 }
@@ -18,6 +17,7 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 .page-title {
     margin-left: 20px;
     margin-right: 20px;
+    margin-top: 15px;
     font-size: 16pt;
 }
 
@@ -28,10 +28,14 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 
 .hero-number {
     font-size: 4em;
+    display: flex;
 }
 
 .hero-label {
-    font-size: 16pt;
+    font-size: 10pt;
+    font-style: italic;
+    padding-top: 5px;
+    /*border-top: 1px solid #464646;*/
 }
 
 .hero-stat {
@@ -40,5 +44,17 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 }
 
 .hero-stats-breakdown {
-    font-size: 16pt;
+    font-size: 14pt;
+    line-height: 1.5;
+    margin-left: 15px;
+    margin-top: 12px;
 }
+
+/*.article {
+    font-size: 1.15em;
+    line-height: 1.73;
+}
+
+a, a:visited {
+    color: #464646;
+}*/

@@ -123,7 +123,7 @@ def index():
 
     occurrence = round(3000 / isolations)
 
-    return render_template('index.new.html.jinja', date=date, 
+    return render_template('index.html.jinja', date=date, 
     isolations=isolations, 
     hospitalizations=hospitalizations, 
     occurrence=occurrence,
