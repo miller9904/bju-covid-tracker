@@ -1,5 +1,8 @@
 Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
 
+    var dateStart = new Date();
+    dateStart.setDate(dateStart.getDate()-30);
+    var dateEnd = new Date();
 
     function isolations(data) {
         return data.map(function (data) { return data.studentIsolation + data.facStaffIsolation; });
@@ -83,6 +86,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
                 },
                 {step: 'all'}
               ]},
+              range: [ dateStart.toISOString(), dateEnd.toISOString()]
         },
 
         yaxis: {
