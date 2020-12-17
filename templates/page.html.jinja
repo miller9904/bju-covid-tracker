@@ -1,0 +1,24 @@
+{% extends "base.html.jinja" %}
+{% block head %}
+{{ super () }}
+<link href="/static/css/base.css" rel="stylesheet">
+<link href="/static/css/content-formatting.css" rel="stylesheet">
+<link href="/static/css/footer.css" rel="stylesheet">
+{% endblock head %}
+
+{% block body %}
+<div class="pure-g">
+    <div class="pure-u-1 titlebar">
+        <div class="page-title">{% block header %}{% endblock header %}</div>
+    </div>
+</div>
+<div class="pure-g">
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+    <div class="pure-u-22-24 pure-u-md-2-3 article">
+        {% block content %}{% endblock content %}
+    </div>
+    <div class="pure-u-1-24 pure-u-md-1-6"></div>
+</div>
+
+{% include "footer.html.jinja" %}
+{% endblock body %}

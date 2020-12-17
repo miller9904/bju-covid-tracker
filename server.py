@@ -132,5 +132,13 @@ def index():
     sH=sH,
     fH=fH)
 
+@app.route('/privacy/')
+def privacy():
+    return render_template('privacy.html.jinja')
+
+@app.route('/api/')
+def apiPage():
+    return render_template('api.html.jinja')
+
 if __name__ == '__main__':
     app.run(debug=True)

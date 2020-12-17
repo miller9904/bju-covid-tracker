@@ -1,0 +1,67 @@
+{% extends "page.html.jinja" %}
+{% block title %}API - BJU COVID Dashboard{% endblock title %}
+{% block header %}BJU COVID Dashboard — API{% endblock header %}
+{% block content%}
+<h1>API</h1>
+<p>
+<pre>GET /api/v1/entries</pre>
+
+Returns a complete entry for a particular date range. Defaults to the latest record. Ranges may be selected with "begin" and "end" parameters, which are inclusive and accept dates in "yyyymmdd" format. Sort by using "sort" with either "ascending" or "descending".
+
+Example:
+<pre>
+[
+    {
+        "date": 20201106,
+        "studentIsolation": 25,
+        "studentHospitalization": 0,
+        "facStaffIsolation": 6,
+        "facStaffHospitalization": 0,
+        "timestampRetrieved": 1604933662.827424
+    },
+    {
+        "date": 20201104,
+        "studentIsolation": 24,
+        "studentHospitalization": 0,
+        "facStaffIsolation": 6,
+        "facStaffHospitalization": 0,
+        "timestampRetrieved": 1604595046.366427
+    },
+    {
+        "date": 20201102,
+        "studentIsolation": 23,
+        "studentHospitalization": 0,
+        "facStaffIsolation": 6,
+        "facStaffHospitalization": 0,
+        "timestampRetrieved": 1604434895.2966108
+    }
+]
+</pre>
+</p>
+
+<p>
+    <pre>GET /api/v1/entries/:date</pre>
+
+Returns a complete entry for a particular date. Date should be formatted as yyyymmdd. For example, GET /api/v1/entries/20201102.
+
+Example:
+<pre>
+{
+    "date": 20201102,
+    "studentIsolation": 23,
+    "studentHospitalization": 0,
+    "facStaffIsolation": 6,
+    "facStaffHospitalization": 0,
+    "timestampRetrieved": 1604434895.2966108
+}
+</pre>
+
+<pre>GET /api/v1/entries/all</pre>
+
+Returns all dataset entries.
+
+<pre>GET /api/v1/latest</pre>
+
+Returns the latest entry in the dataset.
+</p>
+{% endblock content %}
