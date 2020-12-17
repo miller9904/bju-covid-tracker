@@ -1,0 +1,24 @@
+.footer {
+    background-color: #F0EDED;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.footer-content {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif !important;
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+}
+
+.footer-link img {
+    height: 1.4em;
+    margin-right: 14px;
+}
