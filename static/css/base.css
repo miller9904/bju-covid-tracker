@@ -9,15 +9,29 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     color: #464646;
 }
 
+@media (max-width: 35.5em) {
+    /* pure-u-sm-* styles */
+
+    .page-title {
+        font-size: 12pt !important;
+    }
+}
+
 .titlebar {
     display: flex;
     align-items: center;
 }
 
-.page-title {
+.titlebar img {
+    height: 2em;
     margin-left: 20px;
+}
+
+.page-title {
+    margin-left: 10px;
     margin-right: 20px;
     margin-top: 15px;
+    margin-bottom: 15px;
     font-size: 16pt;
 }
 

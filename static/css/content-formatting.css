@@ -10,6 +10,7 @@ pre {
     background: #0000001c;
     border-radius: 3px;
     padding: 10px;
+    overflow-y: scroll;
 }
 
 @media (max-width: 35.5em) {
