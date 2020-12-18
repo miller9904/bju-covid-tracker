@@ -15,6 +15,26 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     .page-title {
         font-size: 12pt !important;
     }
+
+    .hero-number {
+        font-size: 2em !important;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-stats-breakdown {
+        font-size: 12pt !important;
+        margin-top: initial !important;
+        margin-left: initial !important;
+    }
+
+    .hero-label {
+        text-align: center;
+    }
+
+    .hero-stat {
+        margin-top: 0 !important;
+    }
 }
 
 .titlebar {
