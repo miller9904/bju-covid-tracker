@@ -1,7 +1,7 @@
 Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
 
     var dateStart = new Date();
-    dateStart.setDate(dateStart.getDate()-30);
+    dateStart.setDate(dateStart.getDate() - 30);
     var dateEnd = new Date();
 
     function isolations(data) {
@@ -71,22 +71,24 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
                 family: 'Roboto'
             },
             automargin: true,
-            rangeselector: {buttons: [
-                {
-                  count: 1,
-                  label: '1m',
-                  step: 'month',
-                  stepmode: 'backward'
-                },
-                {
-                  count: 6,
-                  label: '6m',
-                  step: 'month',
-                  stepmode: 'backward'
-                },
-                {step: 'all'}
-              ]},
-              range: [ dateStart.toISOString(), dateEnd.toISOString()]
+            rangeselector: {
+                buttons: [
+                    {
+                        count: 1,
+                        label: '1m',
+                        step: 'month',
+                        stepmode: 'backward'
+                    },
+                    {
+                        count: 6,
+                        label: '6m',
+                        step: 'month',
+                        stepmode: 'backward'
+                    },
+                    { step: 'all' }
+                ]
+            },
+            range: [ dateStart, dateEnd],
         },
 
         yaxis: {
@@ -99,7 +101,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
             b: 50,
             t: 50,
             pad: 4
-          },
+        },
     }
 
     var config = {
