@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve BJU COVID Dashboard
+After=network.target
+
+[Service]
+User={username}
+Group=www-data
+WorkingDirectory=/home/{username}/bju-covid-tracker
+Environment="PATH=/home/{username}/bju-covid-tracker/venv/bin"
+ExecStart=/home/{username}/bju-covid-tracker/venv/bin/uwsgi --ini config.ini
+
+[Install]
+WantedBy=multi-user.target
