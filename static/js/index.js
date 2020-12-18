@@ -1,9 +1,11 @@
 Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
 
+    // Dates for automatic ranging
     var dateStart = new Date();
     dateStart.setDate(dateStart.getDate() - 30);
     var dateEnd = new Date();
 
+    // Create arrays of values
     function isolations(data) {
         return data.map(function (data) { return data.studentIsolation + data.facStaffIsolation; });
     }
@@ -12,6 +14,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
         return data.map(function (data) { return data.studentHospitalization + data.facStaffHospitalization; });
     }
 
+    // Parse dates
     function date(data) {
         return data.map(function (data) {
 
@@ -88,6 +91,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
                     { step: 'all' }
                 ]
             },
+            // Automatic ranging.  Reenable when data is again being reported
             /*range: [ dateStart, dateEnd],*/
         },
 

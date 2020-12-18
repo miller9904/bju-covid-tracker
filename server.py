@@ -60,8 +60,6 @@ class entries(Resource):
 
 class latest(Resource):
     def get(self):
-        # now = datetime.now()
-        # date = now.strftime('%Y%m%d')
 
         # Read all records in database, sort them, and return the latest
         results = db.all()
@@ -110,9 +108,11 @@ def index():
     decorated.sort(reverse=True)
     result = [dict_ for (key, dict_) in decorated][0]
 
+    # format for title
     date = datetime.strptime(str(result['date']), '%Y%m%d')
     date = datetime.strftime(date, '%A, %B %d, %Y')
 
+    # data for dashboard
     isolations = result['studentIsolation'] + result['facStaffIsolation']
     sI = result['studentIsolation']
     fI = result['facStaffIsolation']
@@ -121,6 +121,7 @@ def index():
     sH = result['studentHospitalization']
     fH = result['facStaffHospitalization']
 
+    # Isolation rate with estimated campus population of 3000
     occurrence = round(3000 / isolations)
 
     return render_template('index.html.jinja', date=date, 

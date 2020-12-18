@@ -69,7 +69,6 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     font-size: 10pt;
     font-style: italic;
     padding-top: 5px;
-    /*border-top: 1px solid #464646;*/
 }
 
 .hero-stat {
@@ -83,12 +82,3 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     margin-left: 15px;
     margin-top: 12px;
 }
-
-/*.article {
-    font-size: 1.15em;
-    line-height: 1.73;
-}
-
-a, a:visited {
-    color: #464646;
-}*/

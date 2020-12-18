@@ -14,6 +14,7 @@ pre {
 }
 
 @media (max-width: 35.5em) {
+    /* pure-u-sm-* styles */
     .article {
         font-size: 12pt !important;
     }
