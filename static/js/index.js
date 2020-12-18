@@ -88,7 +88,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
                     { step: 'all' }
                 ]
             },
-            range: [ dateStart, dateEnd],
+            /*range: [ dateStart, dateEnd],*/
         },
 
         yaxis: {
