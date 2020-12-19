@@ -125,12 +125,16 @@ def index():
     occurrence = round(3000 / isolations)
 
     return render_template('index.html.jinja', date=date, 
-    isolations=isolations, 
-    hospitalizations=hospitalizations, 
+    isolations=isolations,
+    isolationGrammar=("" if isolations == 1 else "s"),
+    hospitalizations=hospitalizations,
+    hospitalizationGrammar=("" if hospitalizations == 1 else "s"),
     occurrence=occurrence,
     sI=sI,
+    sIG=("" if sI == 1 else "s"),
     fI=fI,
     sH=sH,
+    sHG=("" if sH == 1 else "s"),
     fH=fH)
 
 @app.route('/privacy/')
