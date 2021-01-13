@@ -1,6 +1,9 @@
 aniso8601==8.1.0
 astroid==2.4.2
+beautifulsoup4==4.9.3
 click==7.1.2
+datefinder==0.7.1
+dateparser==1.0.0
 Flask==1.1.2
 Flask-RESTful==0.3.8
 isort==5.6.4
@@ -12,9 +15,12 @@ mccabe==0.6.1
 pylint==2.6.0
 python-dateutil==2.8.1
 pytz==2020.4
+regex==2020.11.13
 six==1.15.0
+soupsieve==2.1
 tinydb==4.3.0
 toml==0.10.2
+tzlocal==2.1
 uWSGI==2.0.19.1
 Werkzeug==1.0.1
 wrapt==1.12.1
