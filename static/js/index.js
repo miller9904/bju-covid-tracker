@@ -92,7 +92,7 @@ Plotly.d3.json("/api/v1/entries/all?sort=ascending", function (err, data) {
                 ]
             },
             // Automatic ranging.  Reenable when data is again being reported
-            /*range: [ dateStart, dateEnd],*/
+            range: [ dateStart, dateEnd],
         },
 
         yaxis: {

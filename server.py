@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Set up server and data storage
 app = Flask(__name__)
-db = TinyDB('data/db.json')
+db = TinyDB('data/db.json').table('stats', cache_size=0)
 
 # Initialize API
 api = Api(app)
