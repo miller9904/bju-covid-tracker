@@ -71,3 +71,5 @@ query = Query()
 if len(db.search(query.date == int(date))) == 0:
     db.insert(entry)
     print(entry)
+else:
+    print("Up to date - " + date)
