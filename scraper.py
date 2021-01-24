@@ -85,4 +85,4 @@ if len(db.search(query.date == int(date))) == 0:
     db.insert(entry)
     logging.info('Updated to ' + date)
 else:
-    logging.debug("Up to date - " + date)
+    logging.info("Up to date - " + date)
