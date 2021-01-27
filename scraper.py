@@ -6,6 +6,16 @@ import datetime
 import datefinder
 from tinydb import TinyDB, Query
 import logging
+import smtplib
+
+smtpconfig = {
+    'server': '',
+    'port': 587,
+    'username': '',
+    'password': '',
+    'sender': '',
+    'recipient': ['']
+}
 
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s] %(levelname)s: %(message)s", datefmt='%Y-%m-%d %I:%M:%S %p')
 
@@ -84,5 +94,32 @@ query = Query()
 if len(db.search(query.date == int(date))) == 0:
     db.insert(entry)
     logging.info('Updated to ' + date)
+
+    message = """From: BJU COVID Dashboard <""" + smtpconfig['sender'] + """>
+To: <""" + smtpconfig['recipient'][0] + """>
+MIME-Version: 1.0
+Content-type: text/html
+Subject: Data Updated
+
+<h2>BJU COVID Dashboard</h2>
+
+<div>""" + str(entry['studentIsolation'] + entry['facStaffIsolation']) + """ Active cases - """ + str(entry['studentIsolation']) + """ students, """ + str(entry['facStaffIsolation']) + """ faculty / staff</div>
+
+<div>""" + str(entry['studentHospitalization'] + entry['facStaffHospitalization']) + """ hospitalizations - """ + str(entry['studentHospitalization']) + """ students, """ + str(entry['facStaffHospitalization']) + """ faculty / staff</div>
+"""
+
+    try:
+        logging.debug(message)
+        logging.debug(smtpconfig['sender'])
+
+        s = smtplib.SMTP(smtpconfig['server'], smtpconfig['port'])
+        s.starttls()
+        s.login(smtpconfig['username'], smtpconfig['password'])
+        s.sendmail(smtpconfig['sender'], smtpconfig['recipient'], message)
+        s.quit()
+
+        logging.info('Email sent successfully')
+    except Exception as e:
+        logging.error('Unable to send email: ' + str(e))
 else:
     logging.info("Up to date - " + date)
