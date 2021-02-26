@@ -40,11 +40,11 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
 .titlebar {
     display: flex;
     align-items: center;
+    border-bottom: solid #F0EDED 2px;
 }
 
 .titlebar img {
     height: 2em;
-    margin-left: 20px;
 }
 
 .page-title {
@@ -81,4 +81,8 @@ html, button, input, select, textarea, .pure-g [class *="pure-u"] {
     line-height: 1.5;
     margin-left: 15px;
     margin-top: 12px;
+}
+
+h1 {
+    margin-top: 32px;
 }
