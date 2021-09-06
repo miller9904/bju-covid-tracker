@@ -130,4 +130,4 @@ dmypy.json
 
 # Extra
 scrape.html
-data/db.json
+data/
