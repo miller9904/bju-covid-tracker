@@ -122,7 +122,7 @@ def index():
     fH = result['facStaffHospitalization']
 
     # Isolation rate with estimated campus population of 3000
-    occurrence = 0
+    occurrence = 3000
 
     if isolations != 0:
         occurrence = round(3000 / isolations)
