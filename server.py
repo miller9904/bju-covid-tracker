@@ -122,7 +122,10 @@ def index():
     fH = result['facStaffHospitalization']
 
     # Isolation rate with estimated campus population of 3000
-    occurrence = round(3000 / isolations)
+    occurrence = 0
+
+    if isolations != 0:
+        occurrence = round(3000 / isolations)
 
     return render_template('index.html.jinja', date=date, 
     isolations=isolations,
